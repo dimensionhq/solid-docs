@@ -8,7 +8,7 @@ import Toc from '../toc';
 const Base: Component = () => {
     const path = useRouteData();
     const [data, setData] = createSignal("")
-
+    let ref: HTMLDivElement;
     onMount(() => {
         let f_path = "http://" + window.location.host + path;
 
@@ -20,8 +20,8 @@ const Base: Component = () => {
     })
 
     return (
-        <div class='w-screen min-h-screen overflow-hidden '>
-            <div class='flex gap-2 h-24 justify-between items-center px-16 overflow-x-auto'>
+        <div class='w-screen min-h-screen '>
+            <div class='flex  gap-2 h-24 justify-between items-center px-16'>
                 <div class='font-bold text-3xl'>
                     Logo
                 </div>
@@ -31,15 +31,15 @@ const Base: Component = () => {
                     </a>
                 </div>
             </div>
-            <div class='grid grid-cols-9 w-full min-h-full gap-8'>
-                <Sidebar />
+            <div class='grid grid-cols-9 w-full min-h-full gap-8 relative'>
+                <Sidebar ref={ref} />
 
-                <div class='col-span-5 py-10 w-full h-full bg-white overflow-y-auto px-2'>
+                <div class={`col-span-9 lg:col-span-5 px-2  w-full h-full bg-white lg:px-2 min-w-full overflow-auto  lg:ml-[35%]`}>
                     <Show when={data().length > 0}>
                         <Markdown text={data() ?? ""} />
                     </Show>
                 </div>
-                <div class='col-span-2 py-10 w-full h-full '>
+                <div class='col-span-2 py-10 min-w-fit h-full hidden lg:block fixed right-8 top-0 '>
                     <Show when={data().length > 0}>
                         <Toc text={data() ?? ""} />
                     </Show>

@@ -9,6 +9,8 @@ import rehypeSlug from 'rehype-slug'
 import rehypeHighlight from "rehype-highlight";
 import { unified } from 'unified'
 import { createSignal } from 'solid-js'
+import javascript from "highlight.js/lib/languages/javascript.js"
+import markdown from "highlight.js/lib/languages/markdown.js"
 
 const read = async () => {
     const file = await unified()
@@ -17,7 +19,10 @@ const read = async () => {
         .use(remarkGemoji)
         .use(remarkRehype)
         .use(rehypeFormat)
-        .use(rehypeHighlight)
+        .use(rehypeHighlight, {
+            languages: { javascript, markdown },
+            subset: false, plainText: ['txt', 'text']
+        })
         .use(rehypeStringify)
         .use(rehypeSlug)
         .use(rehypeAutolinkHeadings)
@@ -30,9 +35,12 @@ const Markdown = ({ text }) => {
         let result = reader.processSync(text)
         console.log(String(result))
         setResult(String(result))
+    }).catch((err) => {
+        console.log(err)
     })
     return (
         <div
+            class="overflow-auto"
             innerHTML={result()}
         />
     );

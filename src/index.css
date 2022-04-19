@@ -3,6 +3,7 @@
 body {
   margin: 0px;
   padding: 0px;
+  overflow-x: hidden;
   font-family: "Inter", sans-serif;
 }
 
@@ -10,9 +11,6 @@ a {
   text-decoration: none;
   color: black;
 }
-
-@tailwind components;
-@tailwind utilities;
 
 .toc div h1,
 h2,
@@ -22,6 +20,6 @@ h5,
 h6 {
   font-size: 15px;
 }
-.hidden {
-  display: none;
-}
+
+@tailwind components;
+@tailwind utilities;

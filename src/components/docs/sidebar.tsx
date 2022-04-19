@@ -5,7 +5,7 @@ import { Link } from "solid-app-router"
 
 const Sidebar = () => {
     return (
-        <div class='col-span-2 w-full h-full flex items-start justify-start text-black py-16 px-16 flex-col gap-2 overflow-y-auto'>
+        <div class='col-span-2 min-w-fit w-[300px] h-full items-start justify-start text-black py-24 px-16 flex-col gap-2 overflow-y-auto fixed top-0 left-0 hidden lg:flex'>
             <Show when={contents !== undefined}>
                 <For each={contents}>
                     {(page, index) => (
