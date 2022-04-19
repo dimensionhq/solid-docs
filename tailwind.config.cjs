@@ -6,6 +6,7 @@ module.exports = {
         primary: {
           100: "#f7fafc",
         },
+        sidebar: "#f7fafc",
       },
     },
   },

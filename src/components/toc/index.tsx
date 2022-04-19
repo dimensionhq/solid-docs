@@ -71,6 +71,7 @@ const Toc = ({ text }) => {
     })
     return (
         <div ref={rootRef} class="toc px-4 py-8">
+            <h1 class="text-xl">Table of contents: </h1>
             <div innerHTML={result()}></div>
         </div>
     )
